@@ -9,17 +9,16 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import lombok.Data;
-
 @Entity
 @Data
-public class Userentity 
+public class FoodOrders 
 {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	 private int userId;
-	    private String username;
-	    private String email;
-	    private String password;
-	    @OneToMany(cascade = CascadeType.ALL)
-	    private List<FoodOrders> foodorders;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+       private int orderId;
+	   @OneToMany(cascade = CascadeType.ALL)
+       private List<FoodItems>items;
+       private String status;
+	
+       
 }
