@@ -2,10 +2,10 @@ package com.hotel.v2soru.dto;
 
 import java.util.List;
 
-import com.hotel.v2soru.entity.DeviveryBoy;
+import com.hotel.v2soru.entity.DeliveryBoy;
 import com.hotel.v2soru.entity.FoodItems;
 import com.hotel.v2soru.entity.FoodOrders;
-import com.hotel.v2soru.entity.Userentity;
+import com.hotel.v2soru.entity.User;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -14,15 +14,13 @@ import lombok.Setter;
 
 public class AdminDto
 {
-    private int AdminDtoid;
-    private String AdminDtoname;
-    private String AdminDtoPassword;
-    private long AminDtoContact;
+    private long AdminId;
+    private String AdminName;
+    private String AdminEmail;
   
-    private List<Userentity> manageuser;
+    private List<User> manageuser;
     private List<FoodOrders>managefoodorder;
-    private List<FoodItems>manageFooditems;
-    private List<DeviveryBoy>managedelivery;
+    private List<DeliveryBoy>managedeliveryboys;
     
     
 }
