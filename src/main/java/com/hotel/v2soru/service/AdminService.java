@@ -16,11 +16,12 @@ public class AdminService
 { 	
 	@Autowired
 	private Admindao adminDao;
-	@Autowired
-	private AdminController admincontroller;
-     public ResponseEntity<ResponseStructure<AdminDto>> findAdmin(long adminId){
+	
+     public ResponseEntity<ResponseStructure<AdminDto>> findAdmin(long adminId)
+     {
 		Admin admin = adminDao.findAdmin(adminId);
-		if(admin != null) {
+		if(admin != null)
+		{
 			AdminDto adminDto = new AdminDto();
 			ModelMapper mapper = new ModelMapper();
 			mapper.map(admin,adminDto);

@@ -18,9 +18,9 @@ public class Admin
 	    private String adminname;
 	    private String adminemail;	    
 	    @OneToMany(cascade = CascadeType.ALL)
-	    private List<User>user;
+	    private List<User>manageusers;
 	    @OneToMany(cascade = CascadeType.ALL)
-	    private List<FoodOrders>foodorders;
+	    private List<FoodOrders>manageorders;
 	    @OneToMany(cascade = CascadeType.ALL)
-	    private List<DeliveryBoy>deliverboy;
+	    private List<DeliveryBoy>managedeliverboy;
 }

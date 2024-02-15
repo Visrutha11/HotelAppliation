@@ -18,7 +18,7 @@ import com.hotel.v2soru.service.AdminService;
 
 
 @RestController
-@RequestMapping("Admin")
+@RequestMapping("admin")
 public class AdminController 
 {
 	@Autowired

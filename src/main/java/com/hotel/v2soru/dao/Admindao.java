@@ -3,9 +3,11 @@ import java.util.List;
 import java.util.Optional;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
 import com.hotel.v2soru.entity.Admin;
 import com.hotel.v2soru.repository.AdminRepo;
-
+@Repository
 public class Admindao 
 {
 	@Autowired

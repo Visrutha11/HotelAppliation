@@ -1,9 +1,7 @@
 package com.hotel.v2soru.dto;
 
 import java.util.List;
-
 import com.hotel.v2soru.entity.DeliveryBoy;
-import com.hotel.v2soru.entity.FoodItems;
 import com.hotel.v2soru.entity.FoodOrders;
 import com.hotel.v2soru.entity.User;
 
