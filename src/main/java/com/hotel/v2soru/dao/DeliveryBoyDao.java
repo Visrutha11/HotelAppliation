@@ -4,43 +4,42 @@ import java.util.List;
 import java.util.Optional;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import com.hotel.v2soru.entity.DeliveryBoy;
 import com.hotel.v2soru.repository.DeliveryBoyRepo;
 
+@Repository
 public class DeliveryBoyDao 
 {
 	@Autowired
     DeliveryBoyRepo deliveryboyrepo;
-	
-	
-	@Autowired
-	private DeliveryBoyRepo deliveryBoyRepo;
-	
-	public DeliveryBoy findDeliveryBoy(long deliveryBoyId) {
-		Optional<DeliveryBoy> deliveryboyid = deliveryBoyRepo.findById(deliveryBoyId);
+
+	public  DeliveryBoy findDeliveryBoy(long deliveryBoyId) 
+	{
+		Optional<DeliveryBoy> deliveryboyid = deliveryboyrepo.findById(deliveryBoyId);
 		if(deliveryboyid.isPresent()) {
-			return deliveryBoyRepo.findById(deliveryBoyId).get();
+			return deliveryboyrepo.findById(deliveryBoyId).get();
 		}
 		return null;
 	}
 	
 	public List<DeliveryBoy> findAllDeliveryBoy() {
-		return deliveryBoyRepo.findAll();
+		return deliveryboyrepo.findAll();
 	}
 	
 	public DeliveryBoy saveDeliveryBoy(DeliveryBoy deliveryBoy) {
 		
-		return deliveryBoyRepo.save(deliveryBoy);
+		return deliveryboyrepo.save(deliveryBoy);
 	}
 	
 	public DeliveryBoy updateDeliveryBoy(long deliveryBoyId, DeliveryBoy deliveryBoy) {
 		
 		DeliveryBoy exdeliveryBoy = findDeliveryBoy(deliveryBoyId);
 		
-		if(exdeliveryBoy.getDeliverBoyId() == deliveryBoyId) {
+		if(exdeliveryBoy.getDeliveryBoyId() == deliveryBoyId) {
 		ModelMapper mapper = new ModelMapper();
 		mapper.map(deliveryBoy, exdeliveryBoy);
-		deliveryBoyRepo.save(exdeliveryBoy);
+		deliveryboyrepo.save(exdeliveryBoy);
 		
 		return exdeliveryBoy;
 		}
@@ -51,7 +50,7 @@ public class DeliveryBoyDao
 		
 		DeliveryBoy deliveryboy = findDeliveryBoy(deliveryBoyId);
 		if(deliveryboy == null) {
-			deliveryBoyRepo.deleteById(deliveryBoyId);
+			deliveryboyrepo.deleteById(deliveryBoyId);
 			return deliveryboy;
 		}
 		return null;

@@ -10,9 +10,8 @@ import lombok.Data;
 public class FoodItems 
 {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	 private int itemId;
 	    private String name;
-	    private String description;
 	    private double price;
 }

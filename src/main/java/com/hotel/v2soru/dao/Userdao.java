@@ -5,15 +5,14 @@ import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.hotel.v2soru.entity.Admin;
 import com.hotel.v2soru.entity.User;
 import com.hotel.v2soru.repository.UserRepo;
-
+@Repository
 public class Userdao 
-{
-
-	
+{	
 	@Autowired
 	private UserRepo userRepo;
 	
@@ -56,7 +55,11 @@ public class Userdao
 		return user;
 		}
 		return null;
-		
+	}
+	
+	public User userlogin(String userEmail)
+	{
+		return userRepo.findbyuseremail(userEmail);
 	}
 
 }

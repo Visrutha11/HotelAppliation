@@ -5,10 +5,11 @@ import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.hotel.v2soru.entity.FoodOrders;
 import com.hotel.v2soru.repository.FoodOrderRepo;
-
+@Repository
 public class FoodOrderDao
 {
 

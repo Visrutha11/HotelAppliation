@@ -7,12 +7,13 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 import com.hotel.v2soru.config.ResponseStructure;
 import com.hotel.v2soru.dao.Userdao;
 import com.hotel.v2soru.dto.UserDto;
 import com.hotel.v2soru.entity.User;
-
+@Service
 public class UserService 
 {
 	

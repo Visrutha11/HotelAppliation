@@ -11,15 +11,40 @@ import jakarta.persistence.OneToMany;
 import lombok.Data;
 
 @Entity
-@Data
+
 public class User 
 {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	 private int userId;
-	    private String username;
-	    private String email;
-	    private String password;
-	    @OneToMany(cascade = CascadeType.ALL)
-	    private List<FoodOrders> foodorders;
+	 @Id
+	    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	    private long userId;
+	    @no(message = "username cannot be null")
+	    @NotBlank(message = "username cannot be blank")
+	    private String userName;
+	   
+	    @NotNull(message = "email can not be null")
+	    @NotBlank(message = "email can not be blank")
+	    @Email(message = "Invalid Email",regexp = "^[A-Za-z0-9+_.-]+@(.+)$")
+	    private String userEmail;
+	    
+	   
+	    @NotBlank(message = "password cannot be blank")
+	    @Pattern(regexp = "^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)",
+	    message ="password must be alphanumeric and special characters" )
+	    @Size(min = 8,max = 16, message = "password must be 8 to 16 characters")
+	    private String userPassword;
+	    
+	    @Positive
+	  
+	    private long userContact;
+	    
+	    @NotBlank(message = "Address is required")
+	    private String userAddress;
+	   
+	    @OneToMany( cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	    private List<FoodOrder> foodOrders;
+		
+	    @JsonIgnore
+	    @OneToOne(mappedBy = "user",cascade = CascadeType.ALL)
+		private DeliveryBoy deliverBoy;
+
 }

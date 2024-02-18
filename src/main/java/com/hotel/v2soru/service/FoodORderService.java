@@ -5,11 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 import com.hotel.v2soru.config.ResponseStructure;
 import com.hotel.v2soru.dao.FoodOrderDao;
 import com.hotel.v2soru.entity.FoodOrders;
-
+@Service
 public class FoodORderService 
 {
 	@Autowired

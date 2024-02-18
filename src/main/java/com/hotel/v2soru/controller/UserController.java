@@ -22,8 +22,6 @@ import com.hotel.v2soru.service.UserService;
 @RequestMapping("user")
 public class UserController 
 {
-	@Autowired
-	private User user;
 	
 	@Autowired
 	private UserService userService;
@@ -57,7 +55,16 @@ public class UserController
 		
 		return userService.deleteUser(userId);
 	}
+	@PutMapping("assignOrder")
+	public ResponseEntity<ResponseStructure<User>> assignOrder(@RequestParam long userId,@RequestParam long foodOrderId){
+		
+		return userService.assignOrder(userId, foodOrderId);
+	}
 	
+	@PostMapping("userLogin")
+	public ResponseEntity<ResponseStructure<User>> userLogin(@RequestBody User user){
+		return userService.userLogin(user);
+	}
 	
 	
 	

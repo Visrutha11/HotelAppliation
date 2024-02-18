@@ -7,4 +7,7 @@ import com.hotel.v2soru.entity.Admin;
 public interface AdminRepo extends JpaRepository<Admin, Long>
 {
 
+	
+	
+
 }

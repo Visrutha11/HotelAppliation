@@ -49,5 +49,16 @@ public class FoodOrderController
 	{	
 		return foodOrderService.deleteFoodOrder(foodOrderId);
 	}
+	@PutMapping("assignItem")
+	public ResponseEntity<ResponseStructure<FoodOrders>> aasignFoodItem(@RequestParam long foodOrderId,@RequestParam long foodItemId){
+		
+		return foodOrderService.aasignFoodItem(foodOrderId, foodItemId);
+	}
+	
+	@PutMapping("removeItem")
+	 public ResponseEntity<ResponseStructure<FoodOrders>> removeFoodItem(@RequestParam long foodOrderId,@RequestParam long foodItemId){
+		 
+		 return foodOrderService.removeFoodItem(foodOrderId, foodItemId);
+	 }
 
 }

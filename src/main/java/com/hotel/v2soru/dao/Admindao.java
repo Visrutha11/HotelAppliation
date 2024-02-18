@@ -11,49 +11,50 @@ import com.hotel.v2soru.repository.AdminRepo;
 public class Admindao 
 {
 	@Autowired
-	private AdminRepo adminrepo;
+	private AdminRepo adminRepo;
 	
-	public Admin findAdmin(long adminid)
-	{
-		Optional<Admin>admin=adminrepo.findById(adminid);
-		if(admin.isPresent())
-		{
-		return adminrepo.findById(adminid).get();
-	}
-		return null;
-	}
-	
-	public List<Admin>findAllAdmin()
-	{
-		return adminrepo.findAll();
-	}
-	
-	public Admin saveadmin(Admin admin)
-	{
-		return adminrepo.save(admin);
-	}
-	public Admin updateAdmin(long adminId,Admin admin)
-	{
-		Admin exadmin=findAdmin(adminId);
-		if(exadmin.getAdminId()==adminId)
-		{
-			ModelMapper mapper=new ModelMapper();
-			mapper.map(admin, exadmin);
-			adminrepo.save(exadmin);
-			return exadmin;
+	public Admin findAdmin(long adminId) {
+		
+		Optional<Admin> admin = adminRepo.findById(adminId);
+		if(admin.isPresent()) {
+			return adminRepo.findById(adminId).get();
 		}
 		return null;
 	}
 	
-	public Admin deleteAdmin(long adminId)
-	{
-		Admin admin=findAdmin(adminId);
-		if(admin.getAdminId()==adminId)
-		{
-			adminrepo.deleteById(adminId);
+	public List<Admin> findAllAdmin() {
+		
+		return adminRepo.findAll();
+	}
+	
+	public Admin saveAdmin(Admin admin) {
+		
+		return adminRepo.save(admin);
+	}
+	
+	public Admin updateAdmin(long adminId, Admin admin) {
+		Admin exadmin = findAdmin(adminId);
+		if(exadmin.getAdminId() == adminId) {
+		ModelMapper mapper = new ModelMapper();
+		mapper.map(admin, exadmin);
+		adminRepo.save(exadmin);
+		return exadmin;
+		}
+		return null;
+	}
+	
+	public Admin deleteAdmin(long adminId) {
+		Admin admin = findAdmin(adminId);
+		if(admin.getAdminId() == adminId) {
+			adminRepo.deleteById(adminId);
 			return admin;
 		}
 		return null;
+	}
+	
+	public Admin findByadminEmail(String adminEmail) {
+		
+		return adminRepo.findoneByadminEmail(adminEmail);
 	}
 	
 	
