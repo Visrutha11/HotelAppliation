@@ -1,6 +1,7 @@
 package com.hotel.v2soru.exception;
-@SuppressWarnings( "serial" )
-public class AdminListnotFound  extends RuntimeException
+
+@SuppressWarnings("serial")
+public class FoodOrderListNotFound extends RuntimeException 
 {
 	private String message;
 
@@ -8,8 +9,7 @@ public class AdminListnotFound  extends RuntimeException
 		return message;
 	}
 
-	public AdminListnotFound(String message) 
-	{
+	public FoodOrderListNotFound(String message) {
 		super();
 		this.message = message;
 	}

@@ -14,4 +14,6 @@ public class FoodItems
 	 private int itemId;
 	    private String name;
 	    private double price;
+	    private long itemquantity;
+	
 }

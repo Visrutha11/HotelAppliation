@@ -1,5 +1,6 @@
 package com.hotel.v2soru.exception;
-@SuppressWarnings("series")
+
+@SuppressWarnings("serial")
 public class Adminnotfound extends RuntimeException 
 {
           String message;

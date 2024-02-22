@@ -2,8 +2,6 @@ package com.hotel.v2soru.entity;
 
 import java.util.List;
 
-import org.hibernate.type.OrderedSetType;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -13,6 +11,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import lombok.Data;
 @Entity
+@Data
 public class FoodOrders 
 {
 	  @Id
@@ -24,7 +23,7 @@ public class FoodOrders
 
 	    private long totalCost;
 	    
-	    private OrderedSetType orderStatus;
+	    private OrderStatus orderStatus;
 
        
 }

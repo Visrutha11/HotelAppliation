@@ -1,6 +1,7 @@
 package com.hotel.v2soru.exception;
 
-public class Usernotfound 
+@SuppressWarnings("serial")
+public class Usernotfound extends RuntimeException
 { 
 	
 	String message;

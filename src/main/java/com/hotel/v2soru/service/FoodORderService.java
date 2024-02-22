@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
 import com.hotel.v2soru.config.ResponseStructure;
 import com.hotel.v2soru.dao.FoodOrderDao;
+import com.hotel.v2soru.entity.FoodItems;
 import com.hotel.v2soru.entity.FoodOrders;
 @Service
 public class FoodORderService 
@@ -83,4 +83,69 @@ public class FoodORderService
 
 		 return null; //food order does not exist
 	 }
+
+	 public ResponseEntity<ResponseStructure<FoodOrders>> aasignFoodItem(long foodOrderId, long foodItemId){
+		    
+		 FoodOrders foodOrder = foodOrderDao.findFoodOrder(foodOrderId);
+		 FoodItems foodItem = new FoodItems();
+		
+		 if(foodOrder != null && foodItem != null) {
+			 List<FoodItems> items = foodOrder.getItems();
+					items.add(foodItem);
+			 
+			long totalCost = calculateTotalCost(items);
+			 
+			foodOrder.setTotalCost(totalCost);
+			foodOrder.setItems(items);
+			 FoodOrders updateFoodOrder = foodOrderDao.updateFoodOrder(foodOrderId, foodOrder);
+			 
+			 ResponseStructure<FoodOrders> structure = new ResponseStructure<FoodOrders>();
+			 structure.setMessages("foodItem assigned");
+			 structure.setStatuscode(HttpStatus.OK.value());
+			 structure.setData(updateFoodOrder);
+			 return new ResponseEntity<ResponseStructure<FoodOrders>>(structure,HttpStatus.OK);
+		 }
+		 return null;
+	 }
+	 private long calculateTotalCost(List<FoodItems> items) {
+		    long totalCost = 0;
+		    for (FoodItems item : items) {
+		        totalCost += item.getPrice();
+		    }
+		    return totalCost;
+		}
+	 
+
+	 public ResponseEntity<ResponseStructure<FoodOrders>> removeFoodItem(long foodOrderId, long foodItemId){
+		    
+		 FoodOrders foodOrder = foodOrderDao.findFoodOrder(foodOrderId);
+		 FoodItems foodItem = new FoodItems();
+		
+		 if(foodOrder != null && foodItem != null) {
+			 List<FoodItems> items = foodOrder.getItems();
+		             items.remove(foodItem);
+		             foodOrder.setItems(items);
+			
+			 long totalCost = reduceTotalCost(items);
+			 
+			 foodOrder.setTotalCost(totalCost);
+			 FoodOrders updateFoodOrder = foodOrderDao.saveFoodOrder(foodOrder);
+			 
+			 ResponseStructure<FoodOrders> structure = new ResponseStructure<FoodOrders>();
+			 structure.setMessages("foodItem removed");
+			 structure.setStatuscode(HttpStatus.OK.value());
+			 structure.setData(updateFoodOrder);
+			 return new ResponseEntity<ResponseStructure<FoodOrders>>(structure,HttpStatus.OK);
+		
+		 }
+		 return null;
+	 }
+	 private long reduceTotalCost(List<FoodItems> items) {
+		    long totalCost = 0;
+		    for (FoodItems item : items) {
+		        totalCost += item.getPrice();
+		    }
+		    return totalCost;
+		}
+	 
 }

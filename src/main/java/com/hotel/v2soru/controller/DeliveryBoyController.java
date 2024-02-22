@@ -9,12 +9,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.hotel.v2soru.config.ResponseStructure;
 import com.hotel.v2soru.entity.DeliveryBoy;
 import com.hotel.v2soru.service.DeliveryboyService;
-
+@RestController
+@RequestMapping("deliveryboy")
 public class DeliveryBoyController 
 {
 	@Autowired

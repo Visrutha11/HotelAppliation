@@ -1,6 +1,7 @@
 package com.hotel.v2soru.exception;
 
-public class foodordernotofound 
+@SuppressWarnings("serial")
+public class foodordernotofound extends RuntimeException
 {
       String message;
      

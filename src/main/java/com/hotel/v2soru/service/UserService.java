@@ -8,11 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
 import com.hotel.v2soru.config.ResponseStructure;
 import com.hotel.v2soru.dao.Userdao;
 import com.hotel.v2soru.dto.UserDto;
+import com.hotel.v2soru.entity.FoodOrders;
 import com.hotel.v2soru.entity.User;
+
+import jakarta.transaction.Transactional;
 @Service
 public class UserService 
 {
@@ -109,5 +111,60 @@ public class UserService
 		
 		return null; // throw user id does not exist
 	}
+	@Transactional
+	public ResponseEntity<ResponseStructure<User>> assignOreder(long userId, long foodOrderId) {
+
+		User user = userDao.findUser(userId);
+		FoodOrders foodOrder = new FoodOrders();
+
+		if (user != null ){
+			
+			 user.getFoodOrders().add(foodOrder);
+			 User updateUser = userDao.updateUser(userId, user);
+			 
+			ResponseStructure<User> structure = new ResponseStructure<User>();
+			structure.setData(updateUser );
+			structure.setMessages("oredr assigned");
+			structure.setStatuscode(HttpStatus.OK.value());
+			
+			return new ResponseEntity<ResponseStructure<User>>(structure,HttpStatus.OK);		
+		}
+		return null;
+
+	}
+
+	public ResponseEntity<ResponseStructure<User>> userLogin(User user) {
+		 User byUserEmail = userDao.userlogin(user.getUserEmail());
+
+		    if (user.getUserEmail() != null && byUserEmail != null) {
+		        
+		        if (user.getUserEmail().equals(byUserEmail.getUserEmail()) &&
+		            user.getUserPassword().equals(byUserEmail.getUserPassword())) {
+
+		            ResponseStructure<User> structure = new ResponseStructure<User>();
+		          
+		            structure.setMessages("Login successfully");
+		            structure.setStatuscode(HttpStatus.OK.value());
+		            return new ResponseEntity<ResponseStructure<User>>(structure, HttpStatus.OK);
+		        }
+		    }
+		    ResponseStructure<User> errorStructure = new ResponseStructure<User>();
+		    errorStructure.setMessages("Login failed");
+		    errorStructure.setStatuscode(HttpStatus.UNAUTHORIZED.value());
+
+		    return new ResponseEntity<ResponseStructure<User>>(errorStructure, HttpStatus.UNAUTHORIZED);
+		}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

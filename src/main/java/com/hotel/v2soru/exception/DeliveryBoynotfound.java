@@ -1,6 +1,7 @@
 package com.hotel.v2soru.exception;
 
-public class DeliveryBoynotfound 
+@SuppressWarnings("serial")
+public class DeliveryBoynotfound extends RuntimeException
 {
 	 String message;
      

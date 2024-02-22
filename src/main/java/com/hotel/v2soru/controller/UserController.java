@@ -58,7 +58,7 @@ public class UserController
 	@PutMapping("assignOrder")
 	public ResponseEntity<ResponseStructure<User>> assignOrder(@RequestParam long userId,@RequestParam long foodOrderId){
 		
-		return userService.assignOrder(userId, foodOrderId);
+		return userService.assignOreder(userId, foodOrderId);
 	}
 	
 	@PostMapping("userLogin")

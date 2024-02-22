@@ -38,7 +38,7 @@ public class FoodOrderDao
 	
 	public FoodOrders updateFoodOrder(long foodOrderId, FoodOrders foodOrder) {
 		FoodOrders exFoodOrder = findFoodOrder(foodOrderId);
-		if(exFoodOrder.getOrderId() == foodOrderId) {
+		if(exFoodOrder.getFoodOrderId() == foodOrderId) {
 		ModelMapper mapper = new ModelMapper();
 		mapper.map(foodOrder , exFoodOrder);
 		
@@ -50,7 +50,7 @@ public class FoodOrderDao
 	public FoodOrders deleteFoodOrder(long foodOrderId) {
 		
 		FoodOrders foodOrder = findFoodOrder(foodOrderId);
-		if(foodOrder.getOrderId() == foodOrderId) {
+		if(foodOrder.getFoodOrderId() == foodOrderId) {
 			foodOrderRepo.deleteById(foodOrderId);
 			return foodOrder;
 		}

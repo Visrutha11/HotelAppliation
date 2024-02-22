@@ -1,6 +1,7 @@
 package com.hotel.v2soru.dao;
 import java.util.List;
 import java.util.Optional;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -11,7 +12,7 @@ import com.hotel.v2soru.repository.AdminRepo;
 public class Admindao 
 {
 	@Autowired
-	private AdminRepo adminRepo;
+	private static AdminRepo adminRepo;
 	
 	public Admin findAdmin(long adminId) {
 		
@@ -22,7 +23,7 @@ public class Admindao
 		return null;
 	}
 	
-	public List<Admin> findAllAdmin() {
+	public static List<Admin> findAllAdmin() {
 		
 		return adminRepo.findAll();
 	}
@@ -56,12 +57,7 @@ public class Admindao
 		
 		return adminRepo.findoneByadminEmail(adminEmail);
 	}
-	
-	
-      
-
-	
-	
+		
 	
 	
 	

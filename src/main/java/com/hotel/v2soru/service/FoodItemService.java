@@ -58,7 +58,8 @@ private FoodItemDao foodItemDao;
 	}
 	
 	public ResponseEntity<ResponseStructure<FoodItems>> updateFoodItem(long foodItemId,FoodItems foodItem){
-		 FoodItems exfoodItem = foodItemDao.findFoodItem(foodItemId);
+		 @SuppressWarnings("unused")
+		FoodItems exfoodItem = foodItemDao.findFoodItem(foodItemId);
 		 if(foodItem != null) {
 			 ResponseStructure<FoodItems> structure = new ResponseStructure<FoodItems>();
 			 structure.setMessages("FoodItem Updated");

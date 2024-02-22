@@ -17,6 +17,7 @@ import lombok.Setter;
 @Entity
  @Getter
  @Setter
+ @Data
 public class DeliveryBoy 
 {
 	  @Id
@@ -35,4 +36,6 @@ public class DeliveryBoy
 	    @OneToOne
 	    @JoinColumn(name="user_id")
 	    private User user;
+
+
 }

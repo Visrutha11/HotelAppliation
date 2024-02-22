@@ -9,12 +9,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.hotel.v2soru.config.ResponseStructure;
 import com.hotel.v2soru.entity.FoodOrders;
 import com.hotel.v2soru.service.FoodORderService;
-
+@RestController
+@RequestMapping("foodorders")
 public class FoodOrderController
 {
 	@Autowired
@@ -50,7 +53,7 @@ public class FoodOrderController
 		return foodOrderService.deleteFoodOrder(foodOrderId);
 	}
 	@PutMapping("assignItem")
-	public ResponseEntity<ResponseStructure<FoodOrders>> aasignFoodItem(@RequestParam long foodOrderId,@RequestParam long foodItemId){
+	public ResponseEntity<ResponseStructure<FoodOrders>> asignFoodItem(@RequestParam long foodOrderId,@RequestParam long foodItemId){
 		
 		return foodOrderService.aasignFoodItem(foodOrderId, foodItemId);
 	}

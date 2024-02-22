@@ -1,6 +1,7 @@
 package com.hotel.v2soru.exception;
 
-public class Fooditemnotfound 
+@SuppressWarnings("serial")
+public class FoodItemNotFound extends RuntimeException
 {
   
 	
@@ -10,7 +11,7 @@ public class Fooditemnotfound
      {
    	  return message;
      }
-     public Fooditemnotfound (String message)
+     public FoodItemNotFound (String message)
      {
    	     super();
    	    this.message=message;
