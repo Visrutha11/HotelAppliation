@@ -10,3 +10,4 @@ public class V2soruApplication
 		SpringApplication.run(V2soruApplication.class, args);
 	}
 }
+
